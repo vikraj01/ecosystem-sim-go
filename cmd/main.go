@@ -32,7 +32,10 @@ func (g *Game) Update() error {
 
 func (g *Game) Draw(screen *ebiten.Image) {
 	green := color.RGBA{0, 128, 0, 255}
-	vector.DrawFilledRect(screen, float32(g.x), float32(g.y), 50, 50, green, false)
+	screen.Fill(green)
+	
+	organisam := color.RGBA{200, 200, 200, 255}
+	vector.DrawFilledRect(screen, float32(g.x), float32(g.y), 50, 50, organisam, false)
 }
 
 func (g *Game) Layout(outsideWidth, outsideHeight int) (int, int) {
