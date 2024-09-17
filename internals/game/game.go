@@ -14,8 +14,8 @@ type Game struct {
 }
 
 func (g *Game) Update() error {
-	g.x += 1
-	g.y += 1
+	g.x += 0.3
+	g.y += 0.5
 	if g.x > 640 {
 		g.x = 0
 	}
@@ -31,6 +31,9 @@ func (g *Game) Draw(screen *ebiten.Image) {
 
 	op := &ebiten.DrawImageOptions{}
 	op.GeoM.Translate(g.x, g.y)
+
+	scaleX, scaleY := 0.2, 0.2
+	op.GeoM.Scale(scaleX, scaleY)
 	screen.DrawImage(g.texture, op)
 }
 
@@ -39,7 +42,7 @@ func (g *Game) Layout(outsideHeight, outsideWidth int) (int, int) {
 }
 
 func NewGame() (*Game, error) {
-	spritePath := "assets/texture/Digiton_H.png"
+	spritePath := "assets/textures/gopher.png"
 	texture, err := assets.LoadTexture(spritePath)
 	if err != nil {
 		return nil, err
